@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <h4>Phase 2</h4>
+  <table class="table table-bordered" *ngIf="countries.length; else empty">
+    <thead>
+      <th>Card County</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let county of countries">
+        <tr *ngIf="county.selected">
+          <td>
+             {{county.name}}
+          </td>
+          <td>
+             <img class="delete" src="../../assets/delte.png" (click)="unCheck(county)"/>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+   <ng-template #empty>
+     No country selected
+   </ng-template>
+</div>

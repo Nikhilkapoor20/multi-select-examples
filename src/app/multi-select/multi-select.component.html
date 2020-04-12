@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <h4>Phase 1</h4>
+  <div  id="list1" class="dropdown-check-list" tabindex="0">
+    <div class="anchor form-control" #selectBox>
+      <span *ngIf="selectedCounty.length">
+        <span class="selected-spans mr-1" *ngFor="let county of selectedCounty">
+          {{county.name}}
+          <img (click)="unSelect(county)" src="../assets/cross.png"/>
+        </span>
+      </span>
+      <span *ngIf="!selectedCounty.length">
+        Select countries
+      </span>
+    <img class="arrow-down" src="../assets/arrow-d.png"  (click)="toggleSelectBox()"/>
+    </div>
+    <ul class="items">
+      <input type="text" class="form-control" [(ngModel)]="filterValue" />
+      <li *ngFor="let country of countries  | filter : 'name' : filterValue">
+        <input placeholder="filter country" type="checkbox" [checked]="country.selected" (click)="addSelectedCountries(country)"
+          [(ngModel)]="country.selected" /> {{country.name}}
+      </li>
+    </ul>
+  </div>
+</div>

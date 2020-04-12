@@ -1,0 +1,24 @@
+<div class="wrapper d-flex">
+  <h4>Phase 3</h4>
+  Note: Search data is only available for India
+  <div class="select-boxes">
+    <select class="mr-3" [(ngModel)]="selectedCounty" (ngModelChange)="reset()">
+      <option value="">Please Select Country</option>
+      <option [value]="county.value" *ngFor="let county of countries">
+        {{county.name}}
+      </option>
+    </select>
+    <select  class="mr-3"  [(ngModel)]="selectedState">
+      <option value="">Please Select State</option>
+      <option [value]="state.stateCode" *ngFor="let state of states | filter : 'country' : selectedCounty: true">
+        {{state.name}}
+      </option>
+    </select>
+    <select  class="mr-3"  [(ngModel)]="selectedCity">
+      <option value="">Please Select City</option>
+      <option [value]="city.stateCode" *ngFor="let city of cities | filter : 'state' : selectedState: true">
+        {{city.name}}
+      </option>
+    </select>
+  </div>
+</div>
